@@ -1,0 +1,56 @@
+git命令：
+查工作量：git log --since="2020-6-28" --before="2020-7-05" --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+git init	# 初始化仓库
+git checkout -- file1 # 废除还没有提交到暂存区的修改
+git add
+git reset HEAD file  # 将暂存区的代码unstage，就是恢复到提交区的状态
+git commit -m "commit comments"
+git status
+git log
+git log --pretty=oneline
+git reset --hard HEAD^
+git reset --hard 681B
+git reflog
+git rm file1 & git commit -m "delete file1"  #delete file1 from repo
+rm file1 & git checkout -- file1		# 恢复删掉的文件
+git branch dev & git checkout dev   =  get checkout -b dev   # create new branch
+git branch  #show all branches
+git checkout master			# return to master branch
+git checkout master & git merge dev	# merge dev branch to current branch
+git branch -d dev 			# delete dev branch
+
+## if there are some conflicts when merging
+git branch master & git merge dev
+# confront some conflicts
+# fix these conflicts manually
+git add file & git commit -m "conflicts fixed"
+#complete merge
+ 
+git log --graph --pretty=oneline --abbrev-commit		# show log graphlly
+
+# bug branch
+# when working on dev branch
+git stash		# stash the current sorking place
+git checkout master
+git checkout -b issue-101
+# modify some bugs
+git add file & git commit -m "fixed bugs"
+git checkout master & git merge -m "merged bug fix 101"		# merge to master branch
+git checkout dev 
+git stash pop						# restore working place
+git cherry-pick <commit-id>					# sync the fixed bugs to current branch
+
+# delete branch forcefully
+git branch -D branch
+
+# 当在分支bra1修改了内容，没有暂存和提交，直接用checkout -b bra2, 那么修改的记录将会转移到新分支，原分支将会
+# 恢复版本库的状态
+
+# 删除远程关联
+git remote remove xxx
+
+# 关联远程库
+git push --set-upstream origin dev
+
+# 推送到远程仓库
+git push -u dev

@@ -56,5 +56,7 @@ git push --set-upstream origin dev
 git push -u dev
 
 # 用户及权限
+## 设置local用户名，进入仓库，执行git config --local user.name xxx user.email xxx
 ## 查看local用户，进入仓库，执行git config -l最后几行会显示user.name, user.email
 ## 查看global用户，执行git config -l中间几行显示
+

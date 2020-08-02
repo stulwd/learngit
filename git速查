@@ -1,24 +1,42 @@
 git命令：
-查工作量：git log --since="2020-6-28" --before="2020-7-05" --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
-git init	# 初始化仓库
-git checkout -- file1 # 废除还没有提交到暂存区的修改
+查工作量：
+git log --since="2020-6-28" --before="2020-7-05" --author="$(git config --get user.name)" --pretty=tformat: --numstat | gawk '{ add += $1 ; subs += $2 ; loc += $1 - $2 } END { printf "added lines: %s removed lines : %s total lines: %s\n",add,subs,loc }'
+# 初始化仓库
+git init	
+# 废除还没有提交到暂存区的修改
+git checkout -- file1 
+# 添加到暂存区
 git add
-git reset HEAD file  # 将暂存区的代码unstage，就是恢复到提交区的状态
+# 将暂存区的代码unstage，就是恢复到提交区的状态
+git reset HEAD file  
+# 提交
 git commit -m "commit comments"
+# 查看当前仓库状态
 git status
+# 当前仓库日志
 git log
+# 每个commit只显示一行的日志
 git log --pretty=oneline
+# 退回上一个版本
 git reset --hard HEAD^
+# 按照commit哈希回退
 git reset --hard 681B
+# git的操作记录
 git reflog
+# 如何删除某一文件
 git rm file1 & git commit -m "delete file1"  #delete file1 from repo
+# 如何恢复删除的文件
 rm file1 & git checkout -- file1		# 恢复删掉的文件
+# 创建分支以及切换分支
 git branch dev & git checkout dev   =  get checkout -b dev   # create new branch
+# 显示当前仓库所有分支
 git branch  #show all branches
+# 合并分支并删除分支
 git checkout master			# return to master branch
 git checkout master & git merge dev	# merge dev branch to current branch
 git branch -d dev 			# delete dev branch
 
+# 如何解决合并冲突
 ## if there are some conflicts when merging
 git branch master & git merge dev
 # confront some conflicts
@@ -26,9 +44,12 @@ git branch master & git merge dev
 git add file & git commit -m "conflicts fixed"
 #complete merge
  
+# 打印日志
 git log --graph --pretty=oneline --abbrev-commit		# show log graphlly
+## 按照自定义格式打印
+ git log --pretty=format:'commit %h by %an %n %as' --graph --abbrev-commit
 
-# bug branch
+# 当在自己的分支开发的时候，老板要你立刻在master上解决的bug，正确的处理方式
 # when working on dev branch
 git stash		# stash the current sorking place
 git checkout master
@@ -40,7 +61,7 @@ git checkout dev
 git stash pop						# restore working place
 git cherry-pick <commit-id>					# sync the fixed bugs to current branch
 
-# delete branch forcefully
+# 强行删除分支
 git branch -D branch
 
 # 当在分支bra1修改了内容，没有暂存和提交，直接用checkout -b bra2, 那么修改的记录将会转移到新分支，原分支将会

@@ -81,3 +81,8 @@ git push -u dev
 ## 查看local用户，进入仓库，执行git config -l最后几行会显示user.name, user.email
 ## 查看global用户，执行git config -l中间几行显示
 
+
+# 如果git pull后，如何撤销
+## 因为有可能pull到很多次commit，所以上一个本地版本不一定是HEAD^
+## 用git reflog查看本地仓库的历史信息，HEAD@{1}就是之前本地的版本，用git reset --hard HEAD@{1}即可
+## 要是不放心，可以用 git reflog --pretty=format:'commit %h by %an %n %as'和git log的输出做对比。

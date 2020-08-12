@@ -86,3 +86,6 @@ git push -u dev
 ## 因为有可能pull到很多次commit，所以上一个本地版本不一定是HEAD^
 ## 用git reflog查看本地仓库的历史信息，HEAD@{1}就是之前本地的版本，用git reset --hard HEAD@{1}即可
 ## 要是不放心，可以用 git reflog --pretty=format:'commit %h by %an %n %as'和git log的输出做对比。
+
+# 拉取本地没有的一个远程分支
+git pull origin branchName:branchName （远程分支名：要创建的本地分支名）

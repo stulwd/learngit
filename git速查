@@ -89,3 +89,6 @@ git push -u dev
 
 # 拉取本地没有的一个远程分支
 git pull origin branchName:branchName （远程分支名：要创建的本地分支名）
+
+# 修改已经commit的信息
+到./.git/COMMIT_EDITMSG下修改，或者通过git commit --amend --author="lwd <liuwendi1@huawei.com>"来修改

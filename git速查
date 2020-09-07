@@ -92,3 +92,11 @@ git pull origin branchName:branchName （远程分支名：要创建的本地分
 
 # 修改已经commit的信息
 到./.git/COMMIT_EDITMSG下修改，或者通过git commit --amend --author="lwd <liuwendi1@huawei.com>"来修改
+
+# git rebase
+master: A-B-C-D-E-F
+dev: A-B-C-G-H
+在dev分支下执行git rebase dev
+dev: A-B-C-D-E-F-G-H
+再返回到master分支合并：
+git merge dev

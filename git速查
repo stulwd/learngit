@@ -100,3 +100,8 @@ dev: A-B-C-G-H
 dev: A-B-C-D-E-F-G-H
 再返回到master分支合并：
 git merge dev
+
+# 下完主仓切分支
+git clone <url>
+cd rpo
+git checkout -b branch1 origin/branch1

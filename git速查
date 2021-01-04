@@ -113,3 +113,6 @@ git diff hash1 hash2 filename # 文件修改详情
 # 合并最近10次commit
 git rebase -i 之前第11次的commitid  #这里的commitid代表最后一个不想要合并的commit
 在出现的编辑文件中，想要保留的commit前的pick不变，想要合并的commit前的pick改为squash
+
+# 查看本地分支和远程的对应关系
+git branch -vv

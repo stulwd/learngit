@@ -116,3 +116,17 @@ git rebase -i 之前第11次的commitid  #这里的commitid代表最后一个不
 
 # 查看本地分支和远程的对应关系
 git branch -vv
+
+# 查看分支提交的相关文件
+git log --stat
+
+# 对比两个分支commit历史
+查看 dev 有，而 master 中没有的
+git log dev ^master --stat
+dev 中比 master 中多提交了哪些内容
+git log master..dev --stat
+
+# 设置credential策略
+git config --global -l # 查看
+git config --global credential.helper store --file=.git_credentails # 设置凭证存储在文件中，下次拉代码不用重复输入密码
+git config --global credential.helper cache # 设置凭证为缓存，过15分钟会丢失
